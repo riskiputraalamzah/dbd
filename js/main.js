@@ -51,6 +51,9 @@ function updateActiveNavLink() {
     });
 
     navLinks.forEach(link => {
+        // Don't touch the CTA button
+        if (link.classList.contains('nav-cta')) return;
+
         link.classList.remove('active');
         const href = link.getAttribute('href');
         if (href === '#' + current) {
@@ -294,7 +297,7 @@ document.addEventListener('keydown', (e) => {
 function showQuizStartScreen() {
     quizModalBody.innerHTML = `
         <div class="quiz-start-modal">
-            <img src="mascot-dbd.png" alt="Mascot Quiz Master" class="quiz-mascot" style="animation: mascotFloat 3s ease-in-out infinite;">
+            <img src="assets/mascot-dbd.png" alt="Mascot Quiz Master" class="quiz-mascot" style="animation: mascotFloat 3s ease-in-out infinite;">
             <div class="mascot-speech quiz-speech" style="margin-bottom: 1.5rem;">
                 <p>🎮 Waktunya uji pengetahuanmu!</p>
                 <p>Siap jadi <strong>Jagoan DBD</strong>?</p>
@@ -489,7 +492,7 @@ function showResultModal() {
 
     quizModalBody.innerHTML = `
         <div class="quiz-result-modal">
-            <img src="mascot-dbd.png" alt="Mascot" class="result-mascot-modal">
+            <img src="assets/mascot-dbd.png" alt="Mascot" class="result-mascot-modal">
             <div class="result-speech-modal">
                 <p style="font-weight: 600; color: var(--neutral-700); margin: 0;">${speechText}</p>
             </div>
