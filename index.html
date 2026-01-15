@@ -1,942 +1,838 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO Meta Tags -->
-    <title>Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!</title>
-    <meta
-      name="description"
-      content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar cara mencegah DBD dengan 3M Plus melalui quiz, cerita bergambar, dan materi menarik!"
-    />
-    <meta
-      name="keywords"
-      content="DBD, Demam Berdarah, Edukasi Anak, Kesehatan, 3M Plus, Nyamuk Aedes Aegypti, Pencegahan DBD, Gejala DBD, Anak SD"
-    />
-    <meta name="author" content="Aku Jagoan DBD" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="Indonesian" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#e11d48" />
-    <meta name="msapplication-navbutton-color" content="#e11d48" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#e11d48" />
+  <!-- SEO Meta Tags -->
+  <title>Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!</title>
+  <meta name="description"
+    content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar cara mencegah DBD dengan 3M Plus melalui quiz, cerita bergambar, dan materi menarik!" />
+  <meta name="keywords"
+    content="DBD, Demam Berdarah, Edukasi Anak, Kesehatan, 3M Plus, Nyamuk Aedes Aegypti, Pencegahan DBD, Gejala DBD, Anak SD" />
+  <meta name="author" content="Aku Jagoan DBD" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="Indonesian" />
 
-    <!-- Open Graph Meta Tags (Facebook, WhatsApp, LinkedIn, etc.) -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!"
-    />
-    <meta
-      property="og:description"
-      content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar cara mencegah DBD dengan 3M Plus melalui quiz, cerita bergambar, dan materi menarik!"
-    />
-    <meta
-      property="og:image"
-      content="https://riskiputraalamzah.github.io/dbd/assets/og-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Aku Jagoan DBD - Edukasi Demam Berdarah untuk Anak-anak"
-    />
-    <meta
-      property="og:url"
-      content="https://riskiputraalamzah.github.io/dbd/"
-    />
-    <meta property="og:site_name" content="Aku Jagoan DBD" />
-    <meta property="og:locale" content="id_ID" />
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#e11d48" />
+  <meta name="msapplication-navbutton-color" content="#e11d48" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#e11d48" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!"
-    />
-    <meta
-      name="twitter:description"
-      content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar dengan quiz seru dan cerita bergambar!"
-    />
-    <meta
-      name="twitter:image"
-      content="https://riskiputraalamzah.github.io/dbd/assets/og-image.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Aku Jagoan DBD - Edukasi Demam Berdarah untuk Anak-anak"
-    />
+  <!-- Open Graph Meta Tags (Facebook, WhatsApp, LinkedIn, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!" />
+  <meta property="og:description"
+    content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar cara mencegah DBD dengan 3M Plus melalui quiz, cerita bergambar, dan materi menarik!" />
+  <meta property="og:image" content="https://riskiputraalamzah.github.io/dbd/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Aku Jagoan DBD - Edukasi Demam Berdarah untuk Anak-anak" />
+  <meta property="og:url" content="https://riskiputraalamzah.github.io/dbd/" />
+  <meta property="og:site_name" content="Aku Jagoan DBD" />
+  <meta property="og:locale" content="id_ID" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/mascot-dbd.png" />
-    <link rel="apple-touch-icon" href="assets/mascot-dbd.png" />
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aku Jagoan DBD - Yuk Jadi Jagoan Lawan Demam Berdarah!" />
+  <meta name="twitter:description"
+    content="Website edukasi interaktif tentang Demam Berdarah Dengue (DBD) untuk anak-anak SD. Belajar dengan quiz seru dan cerita bergambar!" />
+  <meta name="twitter:image" content="https://riskiputraalamzah.github.io/dbd/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="Aku Jagoan DBD - Edukasi Demam Berdarah untuk Anak-anak" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://riskiputraalamzah.github.io/dbd/" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/mascot-dbd.png" />
+  <link rel="apple-touch-icon" href="assets/mascot-dbd.png" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://riskiputraalamzah.github.io/dbd/" />
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-      <div class="nav-container">
-        <a href="#home" class="nav-logo">
-          <img src="assets/mascot-dbd.png" alt="Mascot" class="logo-mascot" />
-          <span class="logo-text">Aku Jagoan DBD</span>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="assets/mascot-dbd.png" alt="Mascot" class="logo-mascot" />
+        <span class="logo-text">Aku Jagoan DBD</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link">Beranda</a></li>
+        <li><a href="#kenali" class="nav-link">Kenali DBD</a></li>
+        <li><a href="#gejala" class="nav-link">Gejala</a></li>
+        <li><a href="#pencegahan" class="nav-link">Pencegahan</a></li>
+        <li><a href="#cerita" class="nav-link">Cerita</a></li>
+        <li><a href="#video" class="nav-link">Video</a></li>
+        <li><a href="#quiz" class="nav-link nav-cta">🎮 Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🌟 Edukasi Menyenangkan untuk Anak-Anak</div>
+      <h1 class="hero-title">
+        Aku <span class="text-gradient">Jagoan</span> DBD!
+      </h1>
+      <p class="hero-subtitle">
+        Yuk belajar tentang Demam Berdarah dengan cara yang seru dan
+        menyenangkan! Jadilah superhero kesehatan yang melindungi keluarga
+        dari nyamuk jahat! 🦟💪
+      </p>
+      <div class="hero-buttons">
+        <a href="#kenali" class="btn btn-primary">
+          <span>Mulai Belajar</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </a>
-        <button
-          class="nav-toggle"
-          id="navToggle"
-          aria-label="Toggle navigation"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#home" class="nav-link">Beranda</a></li>
-          <li><a href="#kenali" class="nav-link">Kenali DBD</a></li>
-          <li><a href="#gejala" class="nav-link">Gejala</a></li>
-          <li><a href="#pencegahan" class="nav-link">Pencegahan</a></li>
-          <li><a href="#cerita" class="nav-link">Cerita</a></li>
-          <li><a href="#video" class="nav-link">Video</a></li>
-          <li><a href="#quiz" class="nav-link nav-cta">🎮 Quiz</a></li>
-        </ul>
+        <a href="#quiz" class="btn btn-secondary">
+          <span>🎮 Main Quiz</span>
+        </a>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-bg">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-badge">🌟 Edukasi Menyenangkan untuk Anak-Anak</div>
-        <h1 class="hero-title">
-          Aku <span class="text-gradient">Jagoan</span> DBD!
-        </h1>
-        <p class="hero-subtitle">
-          Yuk belajar tentang Demam Berdarah dengan cara yang seru dan
-          menyenangkan! Jadilah superhero kesehatan yang melindungi keluarga
-          dari nyamuk jahat! 🦟💪
-        </p>
-        <div class="hero-buttons">
-          <a href="#kenali" class="btn btn-primary">
-            <span>Mulai Belajar</span>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-          <a href="#quiz" class="btn btn-secondary">
-            <span>🎮 Main Quiz</span>
-          </a>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Materi Seru</span>
         </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">4</span>
-            <span class="stat-label">Materi Seru</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">10</span>
-            <span class="stat-label">Quiz Menarik</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">⭐</span>
-            <span class="stat-label">Badge Jagoan</span>
-          </div>
+        <div class="stat-item">
+          <span class="stat-number">10</span>
+          <span class="stat-label">Quiz Menarik</span>
         </div>
-      </div>
-      <div class="hero-image">
-        <div class="hero-illustration">
-          <div class="illustration-circle"></div>
-          <div class="mascot-container">
-            <img
-              src="assets/mascot-dbd.png"
-              alt="Dokter Nyamuk - Mascot Jagoan DBD"
-              class="hero-mascot"
-            />
-            <div class="mascot-speech hero-speech">
-              <p>Halo! Aku <strong>Dokter Nyamuk</strong>! 👋</p>
-              <p>Ayo belajar bareng tentang DBD!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kenali DBD Section -->
-    <section class="section section-light" id="kenali">
-      <div class="container">
-        <!-- Mascot Guide -->
-        <div class="mascot-guide">
-          <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
-          <div class="guide-speech">
-            <p>
-              Hai teman-teman! Aku akan jelasin tentang
-              <strong>Demam Berdarah</strong> ya. Perhatikan baik-baik! 📖
-            </p>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <span class="section-badge">📚 Yuk Belajar!</span>
-          <h2 class="section-title">Kenali DBD Yuk!</h2>
-          <p class="section-subtitle">
-            Apa sih Demam Berdarah itu? Mari kita pelajari bersama!
-          </p>
-        </div>
-
-        <div class="info-grid">
-          <div class="glass-card info-card">
-            <div class="card-icon">🦟</div>
-            <h3>Apa itu DBD?</h3>
-            <p>
-              DBD atau <strong>Demam Berdarah Dengue</strong> adalah penyakit
-              yang disebabkan oleh virus Dengue. Virus ini dibawa oleh nyamuk
-              <strong>Aedes Aegypti</strong> yang suka menggigit di pagi dan
-              sore hari.
-            </p>
-          </div>
-
-          <div class="glass-card info-card">
-            <div class="card-icon">🏠</div>
-            <h3>Di Mana Nyamuknya?</h3>
-            <p>
-              Nyamuk Aedes Aegypti suka tinggal di tempat yang bersih seperti
-              <strong>bak mandi</strong>, <strong>vas bunga</strong>, dan
-              <strong>genangan air</strong> di sekitar rumah kita. Berbeda
-              dengan nyamuk biasa lho!
-            </p>
-          </div>
-
-          <div class="glass-card info-card">
-            <div class="card-icon">⏰</div>
-            <h3>Kapan Aktifnya?</h3>
-            <p>
-              Nyamuk DBD paling aktif menggigit pada
-              <strong>pagi hari (jam 8-10)</strong> dan
-              <strong>sore hari (jam 4-6)</strong>. Jadi harus hati-hati ya saat
-              jam-jam itu!
-            </p>
-          </div>
-        </div>
-
-        <div class="fun-facts glass-card">
-          <h3>🎯 Fakta Menarik!</h3>
-          <div class="facts-grid">
-            <div class="fact-item">
-              <span class="fact-emoji">🔍</span>
-              <p>
-                Nyamuk Aedes Aegypti punya <strong>garis-garis putih</strong> di
-                badannya seperti zebra!
-              </p>
-            </div>
-            <div class="fact-item">
-              <span class="fact-emoji">👧</span>
-              <p>
-                Hanya nyamuk <strong>betina</strong> yang menggigit manusia
-                karena butuh darah untuk bertelur
-              </p>
-            </div>
-            <div class="fact-item">
-              <span class="fact-emoji">💧</span>
-              <p>
-                Telur nyamuk bisa bertahan hidup sampai
-                <strong>1 tahun</strong> dalam keadaan kering!
-              </p>
-            </div>
-            <div class="fact-item">
-              <span class="fact-emoji">🌧️</span>
-              <p>
-                Musim hujan adalah waktu favorit nyamuk DBD karena banyak
-                <strong>genangan air</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gejala Section -->
-    <section class="section section-dark" id="gejala">
-      <div class="container">
-        <!-- Mascot Guide -->
-        <div class="mascot-guide mascot-guide-dark">
-          <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
-          <div class="guide-speech">
-            <p>
-              ⚠️ <strong>Perhatian!</strong> Ini penting banget! Kalau ada
-              gejala seperti ini, segera bilang ke orang tua ya!
-            </p>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <span class="section-badge">⚠️ Penting!</span>
-          <h2 class="section-title">Awas! Ini Gejalanya</h2>
-          <p class="section-subtitle">
-            Kenali tanda-tanda DBD agar bisa segera berobat ke dokter
-          </p>
-        </div>
-
-        <div class="symptoms-grid">
-          <div class="symptom-card glass-card" data-symptom="1">
-            <div class="symptom-icon">🌡️</div>
-            <h3>Demam Tinggi</h3>
-            <p>Demam mendadak tinggi 38-40°C yang berlangsung 2-7 hari</p>
-            <div class="symptom-indicator urgent">Harus Perhatikan!</div>
-          </div>
-
-          <div class="symptom-card glass-card" data-symptom="2">
-            <div class="symptom-icon">🤕</div>
-            <h3>Sakit Kepala</h3>
-            <p>Sakit kepala yang sangat berat, terutama di bagian dahi</p>
-            <div class="symptom-indicator warning">Sering Terjadi</div>
-          </div>
-
-          <div class="symptom-card glass-card" data-symptom="3">
-            <div class="symptom-icon">😵</div>
-            <h3>Nyeri Otot & Sendi</h3>
-            <p>Badan terasa pegal-pegal dan nyeri di tulang serta sendi</p>
-            <div class="symptom-indicator warning">Sering Terjadi</div>
-          </div>
-
-          <div class="symptom-card glass-card" data-symptom="4">
-            <div class="symptom-icon">🔴</div>
-            <h3>Bintik Merah</h3>
-            <p>Muncul bintik-bintik merah di kulit yang tidak gatal</p>
-            <div class="symptom-indicator urgent">Harus Perhatikan!</div>
-          </div>
-
-          <div class="symptom-card glass-card" data-symptom="5">
-            <div class="symptom-icon">🤢</div>
-            <h3>Mual & Muntah</h3>
-            <p>Merasa mual dan bisa disertai muntah</p>
-            <div class="symptom-indicator warning">Sering Terjadi</div>
-          </div>
-
-          <div class="symptom-card glass-card" data-symptom="6">
-            <div class="symptom-icon">😫</div>
-            <h3>Lemas & Lesu</h3>
-            <p>Tubuh terasa sangat lemas dan tidak bertenaga</p>
-            <div class="symptom-indicator warning">Sering Terjadi</div>
-          </div>
-        </div>
-
-        <div class="alert-box glass-card">
-          <div class="alert-icon">🏥</div>
-          <div class="alert-content">
-            <h3>Kapan Harus ke Dokter?</h3>
-            <p>
-              Segera bawa ke rumah sakit jika mengalami demam tinggi lebih dari
-              2 hari, apalagi jika disertai muntah terus-menerus, mimisan, gusi
-              berdarah, atau nyeri perut hebat!
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pencegahan 3M Plus Section -->
-    <section class="section section-light" id="pencegahan">
-      <div class="container">
-        <!-- Mascot Guide -->
-        <div class="mascot-guide">
-          <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
-          <div class="guide-speech">
-            <p>
-              Nah, ini rahasia jadi <strong>Jagoan Anti DBD</strong>! 💪 Ingat
-              selalu <strong>3M Plus</strong> ya!
-            </p>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <span class="section-badge">💪 Jadi Jagoan!</span>
-          <h2 class="section-title">Jadi Jagoan Anti DBD!</h2>
-          <p class="section-subtitle">
-            Yuk lakukan 3M Plus untuk mencegah DBD di rumah kita!
-          </p>
-        </div>
-
-        <div class="prevention-main">
-          <div class="prevention-card glass-card featured">
-            <div class="prevention-number">3M</div>
-            <h3>Tiga Langkah Utama</h3>
-          </div>
-        </div>
-
-        <div class="prevention-grid">
-          <div class="prevention-item glass-card" data-checked="false">
-            <div class="prevention-check">
-              <span class="check-icon">✓</span>
-            </div>
-            <div class="prevention-icon">🪣</div>
-            <h3>Menguras</h3>
-            <p>
-              Menguras tempat penampungan air seperti
-              <strong>bak mandi, ember, dan vas bunga</strong> minimal seminggu
-              sekali agar telur nyamuk tidak menetas
-            </p>
-            <button class="prevention-btn" onclick="toggleCheck(this)">
-              Sudah Dilakukan! ✓
-            </button>
-          </div>
-
-          <div class="prevention-item glass-card" data-checked="false">
-            <div class="prevention-check">
-              <span class="check-icon">✓</span>
-            </div>
-            <div class="prevention-icon">🫙</div>
-            <h3>Menutup</h3>
-            <p>
-              Menutup rapat semua
-              <strong>tempat penyimpanan air</strong> seperti drum, toren, dan
-              tempayan agar nyamuk tidak bisa masuk bertelur
-            </p>
-            <button class="prevention-btn" onclick="toggleCheck(this)">
-              Sudah Dilakukan! ✓
-            </button>
-          </div>
-
-          <div class="prevention-item glass-card" data-checked="false">
-            <div class="prevention-check">
-              <span class="check-icon">✓</span>
-            </div>
-            <div class="prevention-icon">♻️</div>
-            <h3>Mendaur Ulang</h3>
-            <p>
-              Mendaur ulang <strong>barang bekas</strong> yang bisa menampung
-              air hujan seperti kaleng, botol plastik, dan ban bekas
-            </p>
-            <button class="prevention-btn" onclick="toggleCheck(this)">
-              Sudah Dilakukan! ✓
-            </button>
-          </div>
-        </div>
-
-        <div class="plus-section">
-          <div class="plus-header glass-card">
-            <span class="plus-badge">➕ PLUS</span>
-            <h3>Kegiatan Tambahan yang Membantu</h3>
-          </div>
-
-          <div class="plus-grid">
-            <div class="plus-item glass-card">
-              <span class="plus-icon">🧴</span>
-              <span>Pakai obat anti nyamuk</span>
-            </div>
-            <div class="plus-item glass-card">
-              <span class="plus-icon">🛏️</span>
-              <span>Pasang kelambu saat tidur</span>
-            </div>
-            <div class="plus-item glass-card">
-              <span class="plus-icon">👕</span>
-              <span>Pakai baju lengan panjang</span>
-            </div>
-            <div class="plus-item glass-card">
-              <span class="plus-icon">🐟</span>
-              <span>Pelihara ikan pemakan jentik</span>
-            </div>
-            <div class="plus-item glass-card">
-              <span class="plus-icon">🌱</span>
-              <span>Tanam tanaman pengusir nyamuk</span>
-            </div>
-            <div class="plus-item glass-card">
-              <span class="plus-icon">🏠</span>
-              <span>Pasang kawat kasa di ventilasi</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="progress-tracker glass-card">
-          <h3>🏆 Progress Jagoan!</h3>
-          <div class="tracker-bar">
-            <div class="tracker-fill" id="progressFill"></div>
-          </div>
-          <p class="tracker-text" id="progressText">
-            Ayo centang kegiatan 3M yang sudah kamu lakukan!
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cerita Bergambar Section -->
-    <section class="section section-dark" id="cerita">
-      <div class="container">
-        <!-- Mascot Guide -->
-        <div class="mascot-guide mascot-guide-dark">
-          <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
-          <div class="guide-speech">
-            <p>
-              🎭 Waktunya cerita seru! Yuk simak petualangan Dimas menjadi
-              <strong>Jagoan DBD</strong>!
-            </p>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <span class="section-badge">📖 Cerita Seru!</span>
-          <h2 class="section-title">Cerita Bergambar</h2>
-          <p class="section-subtitle">
-            Yuk ikuti cerita petualangan melawan nyamuk DBD!
-          </p>
-        </div>
-
-        <div class="story-container glass-card">
-          <div class="story-slides" id="storySlides">
-            <!-- Slide 1 -->
-            <div class="story-slide active" data-slide="1">
-              <div class="slide-image">
-                <div class="slide-illustration">
-                  <span class="story-emoji">🌅🏠</span>
-                </div>
-              </div>
-              <div class="slide-content">
-                <h3>Pagi yang Cerah</h3>
-                <p>
-                  Di sebuah pagi yang cerah, Dimas sedang bermain di halaman
-                  rumah. Tiba-tiba ia melihat genangan air di pot bunga kosong.
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="story-slide" data-slide="2">
-              <div class="slide-image">
-                <div class="slide-illustration">
-                  <span class="story-emoji">👦🔍🦟</span>
-                </div>
-              </div>
-              <div class="slide-content">
-                <h3>Menemukan Jentik Nyamuk</h3>
-                <p>
-                  "Wah, ada jentik-jentik kecil berenang di air ini!" kata
-                  Dimas. Ia ingat pelajaran di sekolah tentang nyamuk DBD.
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="story-slide" data-slide="3">
-              <div class="slide-image">
-                <div class="slide-illustration">
-                  <span class="story-emoji">👦💬👩</span>
-                </div>
-              </div>
-              <div class="slide-content">
-                <h3>Bercerita ke Ibu</h3>
-                <p>
-                  Dimas segera memberitahu ibunya. "Bu, ada jentik nyamuk di
-                  pot! Itu bisa jadi nyamuk DBD!" Ibu tersenyum bangga.
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="story-slide" data-slide="4">
-              <div class="slide-image">
-                <div class="slide-illustration">
-                  <span class="story-emoji">👨‍👩‍👦🪣✨</span>
-                </div>
-              </div>
-              <div class="slide-content">
-                <h3>Beraksi Bersama!</h3>
-                <p>
-                  Seluruh keluarga beraksi! Mereka menguras bak mandi, menutup
-                  drum air, dan membuang barang bekas. Gerakan 3M Plus!
-                </p>
-              </div>
-            </div>
-
-            <!-- Slide 5 -->
-            <div class="story-slide" data-slide="5">
-              <div class="slide-image">
-                <div class="slide-illustration">
-                  <span class="story-emoji">🦸‍♂️🏆🌟</span>
-                </div>
-              </div>
-              <div class="slide-content">
-                <h3>Dimas Sang Jagoan!</h3>
-                <p>
-                  "Kamu hebat, Dimas! Sekarang kamu adalah Jagoan DBD yang
-                  melindungi keluarga!" kata Ayah sambil memberikan jempol.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="story-controls">
-            <button
-              class="story-btn prev"
-              id="prevBtn"
-              onclick="changeSlide(-1)"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-              Sebelumnya
-            </button>
-            <div class="story-progress">
-              <span id="currentSlide">1</span> / <span id="totalSlides">5</span>
-            </div>
-            <button
-              class="story-btn next"
-              id="nextBtn"
-              onclick="changeSlide(1)"
-            >
-              Selanjutnya
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-
-          <div class="story-dots">
-            <span class="dot active" onclick="goToSlide(1)"></span>
-            <span class="dot" onclick="goToSlide(2)"></span>
-            <span class="dot" onclick="goToSlide(3)"></span>
-            <span class="dot" onclick="goToSlide(4)"></span>
-            <span class="dot" onclick="goToSlide(5)"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="section section-light" id="video">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge">🎬 Video Seru!</span>
-          <h2 class="section-title">Video Edukasi</h2>
-          <p class="section-subtitle">Tonton video menarik tentang DBD!</p>
-        </div>
-
-        <div class="video-grid">
-          <div class="video-card glass-card">
-            <div class="video-thumbnail">
-              <div class="video-placeholder">
-                <span class="video-emoji">🦟📚</span>
-                <div class="play-button">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-              <span class="video-duration">5:30</span>
-            </div>
-            <div class="video-info">
-              <h3>Mengenal Nyamuk Aedes Aegypti</h3>
-              <p>Yuk kenali ciri-ciri nyamuk penyebab DBD!</p>
-            </div>
-          </div>
-
-          <div class="video-card glass-card">
-            <div class="video-thumbnail">
-              <div class="video-placeholder">
-                <span class="video-emoji">🌡️💊</span>
-                <div class="play-button">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-              <span class="video-duration">4:15</span>
-            </div>
-            <div class="video-info">
-              <h3>Gejala DBD yang Harus Diwaspadai</h3>
-              <p>Pelajari tanda-tanda demam berdarah!</p>
-            </div>
-          </div>
-
-          <div class="video-card glass-card">
-            <div class="video-thumbnail">
-              <div class="video-placeholder">
-                <span class="video-emoji">🪣♻️</span>
-                <div class="play-button">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-              <span class="video-duration">6:00</span>
-            </div>
-            <div class="video-info">
-              <h3>Cara Melakukan 3M Plus</h3>
-              <p>Tutorial pencegahan DBD di rumah!</p>
-            </div>
-          </div>
-
-          <div class="video-card glass-card">
-            <div class="video-thumbnail">
-              <div class="video-placeholder">
-                <span class="video-emoji">🦸‍♂️🏆</span>
-                <div class="play-button">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-              <span class="video-duration">3:45</span>
-            </div>
-            <div class="video-info">
-              <h3>Menjadi Jagoan Anti DBD</h3>
-              <p>Lagu dan gerak seru untuk anak-anak!</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="video-note glass-card">
-          <span class="note-icon">💡</span>
-          <p>
-            Video akan segera tersedia! Untuk sementara, yuk belajar melalui
-            materi bacaan dan quiz interaktif di bawah!
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section class="section section-gradient" id="quiz">
-      <div class="container">
-        <div class="section-header light">
-          <span class="section-badge">🎮 Waktunya Bermain!</span>
-          <h2 class="section-title">Quiz Interaktif</h2>
-          <p class="section-subtitle">
-            Uji pengetahuanmu dan dapatkan badge Jagoan DBD! ⭐
-          </p>
-        </div>
-
-        <div class="quiz-container glass-card" id="quizContainer">
-          <!-- Quiz Start Screen -->
-          <div class="quiz-start" id="quizStart">
-            <div class="quiz-mascot-intro">
-              <img
-                src="assets/mascot-dbd.png"
-                alt="Mascot Quiz Master"
-                class="quiz-mascot"
-              />
-              <div class="mascot-speech quiz-speech">
-                <p>🎮 Waktunya uji pengetahuanmu!</p>
-                <p>Siap jadi <strong>Jagoan DBD</strong>?</p>
-              </div>
-            </div>
-            <h3>Siap Menjadi Jagoan?</h3>
-            <p>
-              Jawab 10 pertanyaan tentang DBD dan kumpulkan bintang untuk
-              mendapatkan badge Jagoan DBD!
-            </p>
-            <div class="quiz-rules">
-              <div class="rule-item">
-                <span>✓</span> 10 pertanyaan pilihan ganda
-              </div>
-              <div class="rule-item">
-                <span>⭐</span> Setiap jawaban benar = 1 bintang
-              </div>
-              <div class="rule-item">
-                <span>🏆</span> 8+ bintang = Badge Jagoan DBD
-              </div>
-            </div>
-            <button class="btn btn-primary btn-large" onclick="startQuiz()">
-              Mulai Quiz! 🚀
-            </button>
-          </div>
-
-          <!-- Quiz Questions -->
-          <div class="quiz-game hidden" id="quizGame">
-            <div class="quiz-header">
-              <div class="quiz-progress-bar">
-                <div class="quiz-progress-fill" id="quizProgressFill"></div>
-              </div>
-              <div class="quiz-info">
-                <span class="quiz-question-num"
-                  >Pertanyaan <span id="questionNum">1</span>/10</span
-                >
-                <span class="quiz-score"
-                  >⭐ <span id="scoreDisplay">0</span></span
-                >
-              </div>
-            </div>
-
-            <div class="quiz-question" id="quizQuestion">
-              <!-- Question content will be inserted by JS -->
-            </div>
-
-            <div class="quiz-options" id="quizOptions">
-              <!-- Options will be inserted by JS -->
-            </div>
-
-            <div class="quiz-feedback hidden" id="quizFeedback">
-              <!-- Feedback will be inserted by JS -->
-            </div>
-
-            <button
-              class="btn btn-primary hidden"
-              id="nextQuestionBtn"
-              onclick="nextQuestion()"
-            >
-              Pertanyaan Berikutnya →
-            </button>
-          </div>
-
-          <!-- Quiz Result -->
-          <div class="quiz-result hidden" id="quizResult">
-            <div class="result-content">
-              <div class="result-mascot-section">
-                <img
-                  src="assets/mascot-dbd.png"
-                  alt="Mascot"
-                  class="result-mascot"
-                />
-                <div class="mascot-speech result-speech" id="resultSpeech">
-                  <p>🎉 Luar biasa! Kamu hebat!</p>
-                </div>
-              </div>
-              <div class="result-badge" id="resultBadge">🏆</div>
-              <h3 id="resultTitle">Selamat!</h3>
-              <p id="resultMessage">Kamu adalah Jagoan DBD sejati!</p>
-              <div class="result-score">
-                <span class="score-stars" id="resultStars">⭐⭐⭐⭐⭐</span>
-                <span class="score-text" id="resultScoreText"
-                  >10/10 Bintang</span
-                >
-              </div>
-              <div class="result-actions">
-                <button class="btn btn-primary" onclick="restartQuiz()">
-                  🔄 Main Lagi
-                </button>
-                <button class="btn btn-secondary" onclick="shareResult()">
-                  📤 Bagikan
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <img
-              src="assets/mascot-dbd.png"
-              alt="Mascot"
-              class="footer-mascot"
-            />
-            <span class="logo-text">Aku Jagoan DBD</span>
-            <p>
-              Website edukasi interaktif tentang Demam Berdarah Dengue untuk
-              anak-anak Indonesia.
-            </p>
-          </div>
-          <div class="footer-links">
-            <h4>Menu</h4>
-            <ul>
-              <li><a href="#kenali">Kenali DBD</a></li>
-              <li><a href="#gejala">Gejala</a></li>
-              <li><a href="#pencegahan">Pencegahan</a></li>
-              <li><a href="#quiz">Quiz</a></li>
-            </ul>
-          </div>
-          <div class="footer-info">
-            <h4>Informasi</h4>
-            <p>
-              Website ini dibuat untuk tujuan edukasi kesehatan anak-anak
-              tentang bahaya dan pencegahan Demam Berdarah Dengue (DBD).
-            </p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>
-            © 2026 Aku Jagoan DBD - Tugas UAS Desain Komunikasi dan Multimedia
-          </p>
-          <p>Dibuat dengan ❤️ untuk anak-anak Indonesia</p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Quiz Modal Overlay -->
-    <div class="quiz-modal-overlay" id="quizModalOverlay">
-      <div class="quiz-modal" id="quizModal">
-        <!-- Modal Header -->
-        <div class="quiz-modal-header">
-          <div class="quiz-modal-title">
-            <img src="assets/mascot-dbd.png" alt="Mascot" />
-            <span>🎮 Quiz Jagoan DBD</span>
-          </div>
-          <button
-            class="quiz-modal-close"
-            onclick="closeQuizModal()"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <!-- Modal Body - Content will be dynamically inserted by JS -->
-        <div class="quiz-modal-body" id="quizModalBody">
-          <!-- Start Screen, Questions, and Results will be inserted here -->
+        <div class="stat-item">
+          <span class="stat-number">⭐</span>
+          <span class="stat-label">Badge Jagoan</span>
         </div>
       </div>
     </div>
+    <div class="hero-image">
+      <div class="hero-illustration">
+        <div class="illustration-circle"></div>
+        <div class="mascot-container">
+          <img src="assets/mascot-dbd.png" alt="Dokter Nyamuk - Mascot Jagoan DBD" class="hero-mascot" />
+          <div class="mascot-speech hero-speech">
+            <p>Halo! Aku <strong>Dokter Nyamuk</strong>! 👋</p>
+            <p>Ayo belajar bareng tentang DBD!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/main.js"></script>
-  </body>
+  <!-- Kenali DBD Section -->
+  <section class="section section-light" id="kenali">
+    <div class="container">
+      <!-- Mascot Guide -->
+      <div class="mascot-guide">
+        <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
+        <div class="guide-speech">
+          <p>
+            Hai teman-teman! Aku akan jelasin tentang
+            <strong>Demam Berdarah</strong> ya. Perhatikan baik-baik! 📖
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-badge">📚 Yuk Belajar!</span>
+        <h2 class="section-title">Kenali DBD Yuk!</h2>
+        <p class="section-subtitle">
+          Apa sih Demam Berdarah itu? Mari kita pelajari bersama!
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <div class="glass-card info-card">
+          <div class="card-icon">🦟</div>
+          <h3>Apa itu DBD?</h3>
+          <p>
+            DBD atau <strong>Demam Berdarah Dengue</strong> adalah penyakit
+            yang disebabkan oleh virus Dengue. Virus ini dibawa oleh nyamuk
+            <strong>Aedes Aegypti</strong> yang suka menggigit di pagi dan
+            sore hari.
+          </p>
+        </div>
+
+        <div class="glass-card info-card">
+          <div class="card-icon">🏠</div>
+          <h3>Di Mana Nyamuknya?</h3>
+          <p>
+            Nyamuk Aedes Aegypti suka tinggal di tempat yang bersih seperti
+            <strong>bak mandi</strong>, <strong>vas bunga</strong>, dan
+            <strong>genangan air</strong> di sekitar rumah kita. Berbeda
+            dengan nyamuk biasa lho!
+          </p>
+        </div>
+
+        <div class="glass-card info-card">
+          <div class="card-icon">⏰</div>
+          <h3>Kapan Aktifnya?</h3>
+          <p>
+            Nyamuk DBD paling aktif menggigit pada
+            <strong>pagi hari (jam 8-10)</strong> dan
+            <strong>sore hari (jam 4-6)</strong>. Jadi harus hati-hati ya saat
+            jam-jam itu!
+          </p>
+        </div>
+      </div>
+
+      <div class="fun-facts glass-card">
+        <h3>🎯 Fakta Menarik!</h3>
+        <div class="facts-grid">
+          <div class="fact-item">
+            <span class="fact-emoji">🔍</span>
+            <p>
+              Nyamuk Aedes Aegypti punya <strong>garis-garis putih</strong> di
+              badannya seperti zebra!
+            </p>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">👧</span>
+            <p>
+              Hanya nyamuk <strong>betina</strong> yang menggigit manusia
+              karena butuh darah untuk bertelur
+            </p>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">💧</span>
+            <p>
+              Telur nyamuk bisa bertahan hidup sampai
+              <strong>1 tahun</strong> dalam keadaan kering!
+            </p>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">🌧️</span>
+            <p>
+              Musim hujan adalah waktu favorit nyamuk DBD karena banyak
+              <strong>genangan air</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gejala Section -->
+  <section class="section section-dark" id="gejala">
+    <div class="container">
+      <!-- Mascot Guide -->
+      <div class="mascot-guide mascot-guide-dark">
+        <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
+        <div class="guide-speech">
+          <p>
+            ⚠️ <strong>Perhatian!</strong> Ini penting banget! Kalau ada
+            gejala seperti ini, segera bilang ke orang tua ya!
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-badge">⚠️ Penting!</span>
+        <h2 class="section-title">Awas! Ini Gejalanya</h2>
+        <p class="section-subtitle">
+          Kenali tanda-tanda DBD agar bisa segera berobat ke dokter
+        </p>
+      </div>
+
+      <div class="symptoms-grid">
+        <div class="symptom-card glass-card" data-symptom="1">
+          <div class="symptom-icon">🌡️</div>
+          <h3>Demam Tinggi</h3>
+          <p>Demam mendadak tinggi 38-40°C yang berlangsung 2-7 hari</p>
+          <div class="symptom-indicator urgent">Harus Perhatikan!</div>
+        </div>
+
+        <div class="symptom-card glass-card" data-symptom="2">
+          <div class="symptom-icon">🤕</div>
+          <h3>Sakit Kepala</h3>
+          <p>Sakit kepala yang sangat berat, terutama di bagian dahi</p>
+          <div class="symptom-indicator warning">Sering Terjadi</div>
+        </div>
+
+        <div class="symptom-card glass-card" data-symptom="3">
+          <div class="symptom-icon">😵</div>
+          <h3>Nyeri Otot & Sendi</h3>
+          <p>Badan terasa pegal-pegal dan nyeri di tulang serta sendi</p>
+          <div class="symptom-indicator warning">Sering Terjadi</div>
+        </div>
+
+        <div class="symptom-card glass-card" data-symptom="4">
+          <div class="symptom-icon">🔴</div>
+          <h3>Bintik Merah</h3>
+          <p>Muncul bintik-bintik merah di kulit yang tidak gatal</p>
+          <div class="symptom-indicator urgent">Harus Perhatikan!</div>
+        </div>
+
+        <div class="symptom-card glass-card" data-symptom="5">
+          <div class="symptom-icon">🤢</div>
+          <h3>Mual & Muntah</h3>
+          <p>Merasa mual dan bisa disertai muntah</p>
+          <div class="symptom-indicator warning">Sering Terjadi</div>
+        </div>
+
+        <div class="symptom-card glass-card" data-symptom="6">
+          <div class="symptom-icon">😫</div>
+          <h3>Lemas & Lesu</h3>
+          <p>Tubuh terasa sangat lemas dan tidak bertenaga</p>
+          <div class="symptom-indicator warning">Sering Terjadi</div>
+        </div>
+      </div>
+
+      <div class="alert-box glass-card">
+        <div class="alert-icon">🏥</div>
+        <div class="alert-content">
+          <h3>Kapan Harus ke Dokter?</h3>
+          <p>
+            Segera bawa ke rumah sakit jika mengalami demam tinggi lebih dari
+            2 hari, apalagi jika disertai muntah terus-menerus, mimisan, gusi
+            berdarah, atau nyeri perut hebat!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pencegahan 3M Plus Section -->
+  <section class="section section-light" id="pencegahan">
+    <div class="container">
+      <!-- Mascot Guide -->
+      <div class="mascot-guide">
+        <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
+        <div class="guide-speech">
+          <p>
+            Nah, ini rahasia jadi <strong>Jagoan Anti DBD</strong>! 💪 Ingat
+            selalu <strong>3M Plus</strong> ya!
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-badge">💪 Jadi Jagoan!</span>
+        <h2 class="section-title">Jadi Jagoan Anti DBD!</h2>
+        <p class="section-subtitle">
+          Yuk lakukan 3M Plus untuk mencegah DBD di rumah kita!
+        </p>
+      </div>
+
+      <div class="prevention-main">
+        <div class="prevention-card glass-card featured">
+          <div class="prevention-number">3M</div>
+          <h3>Tiga Langkah Utama</h3>
+        </div>
+      </div>
+
+      <div class="prevention-grid">
+        <div class="prevention-item glass-card" data-checked="false">
+          <div class="prevention-check">
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="prevention-icon">🪣</div>
+          <h3>Menguras</h3>
+          <p>
+            Menguras tempat penampungan air seperti
+            <strong>bak mandi, ember, dan vas bunga</strong> minimal seminggu
+            sekali agar telur nyamuk tidak menetas
+          </p>
+          <div class="prevention-btn-wrapper">
+            <span class="hint-pointer">👆</span>
+            <button class="prevention-btn" onclick="toggleCheck(this)">
+              Sudah Dilakukan! ✓
+            </button>
+          </div>
+        </div>
+
+        <div class="prevention-item glass-card" data-checked="false">
+          <div class="prevention-check">
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="prevention-icon">🫙</div>
+          <h3>Menutup</h3>
+          <p>
+            Menutup rapat semua
+            <strong>tempat penyimpanan air</strong> seperti drum, toren, dan
+            tempayan agar nyamuk tidak bisa masuk bertelur
+          </p>
+          <div class="prevention-btn-wrapper">
+            <span class="hint-pointer">👆</span>
+            <button class="prevention-btn" onclick="toggleCheck(this)">
+              Sudah Dilakukan! ✓
+            </button>
+          </div>
+        </div>
+
+        <div class="prevention-item glass-card" data-checked="false">
+          <div class="prevention-check">
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="prevention-icon">♻️</div>
+          <h3>Mendaur Ulang</h3>
+          <p>
+            Mendaur ulang <strong>barang bekas</strong> yang bisa menampung
+            air hujan seperti kaleng, botol plastik, dan ban bekas
+          </p>
+          <div class="prevention-btn-wrapper">
+            <span class="hint-pointer">👆</span>
+            <button class="prevention-btn" onclick="toggleCheck(this)">
+              Sudah Dilakukan! ✓
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="plus-section">
+        <div class="plus-header glass-card">
+          <span class="plus-badge">➕ PLUS</span>
+          <h3>Kegiatan Tambahan yang Membantu</h3>
+        </div>
+
+        <div class="plus-grid">
+          <div class="plus-item glass-card">
+            <span class="plus-icon">🧴</span>
+            <span>Pakai obat anti nyamuk</span>
+          </div>
+          <div class="plus-item glass-card">
+            <span class="plus-icon">🛏️</span>
+            <span>Pasang kelambu saat tidur</span>
+          </div>
+          <div class="plus-item glass-card">
+            <span class="plus-icon">👕</span>
+            <span>Pakai baju lengan panjang</span>
+          </div>
+          <div class="plus-item glass-card">
+            <span class="plus-icon">🐟</span>
+            <span>Pelihara ikan pemakan jentik</span>
+          </div>
+          <div class="plus-item glass-card">
+            <span class="plus-icon">🌱</span>
+            <span>Tanam tanaman pengusir nyamuk</span>
+          </div>
+          <div class="plus-item glass-card">
+            <span class="plus-icon">🏠</span>
+            <span>Pasang kawat kasa di ventilasi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-tracker glass-card">
+        <h3>🏆 Progress Jagoan!</h3>
+        <div class="tracker-bar">
+          <div class="tracker-fill" id="progressFill"></div>
+        </div>
+        <p class="tracker-text" id="progressText">
+          Ayo centang kegiatan 3M yang sudah kamu lakukan!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cerita Bergambar Section -->
+  <section class="section section-dark" id="cerita">
+    <div class="container">
+      <!-- Mascot Guide -->
+      <div class="mascot-guide mascot-guide-dark">
+        <img src="assets/mascot-dbd.png" alt="Mascot" class="guide-mascot" />
+        <div class="guide-speech">
+          <p>
+            🎭 Waktunya cerita seru! Yuk simak petualangan Dimas menjadi
+            <strong>Jagoan DBD</strong>!
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-badge">📖 Cerita Seru!</span>
+        <h2 class="section-title">Cerita Bergambar</h2>
+        <p class="section-subtitle">
+          Yuk ikuti cerita petualangan melawan nyamuk DBD!
+        </p>
+      </div>
+
+      <div class="story-container glass-card">
+        <div class="story-slides" id="storySlides">
+          <!-- Slide 1 -->
+          <div class="story-slide active" data-slide="1">
+            <div class="slide-image">
+              <div class="slide-illustration">
+                <span class="story-emoji">🌅🏠</span>
+              </div>
+            </div>
+            <div class="slide-content">
+              <h3>Pagi yang Cerah</h3>
+              <p>
+                Di sebuah pagi yang cerah, Dimas sedang bermain di halaman
+                rumah. Tiba-tiba ia melihat genangan air di pot bunga kosong.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="story-slide" data-slide="2">
+            <div class="slide-image">
+              <div class="slide-illustration">
+                <span class="story-emoji">👦🔍🦟</span>
+              </div>
+            </div>
+            <div class="slide-content">
+              <h3>Menemukan Jentik Nyamuk</h3>
+              <p>
+                "Wah, ada jentik-jentik kecil berenang di air ini!" kata
+                Dimas. Ia ingat pelajaran di sekolah tentang nyamuk DBD.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="story-slide" data-slide="3">
+            <div class="slide-image">
+              <div class="slide-illustration">
+                <span class="story-emoji">👦💬👩</span>
+              </div>
+            </div>
+            <div class="slide-content">
+              <h3>Bercerita ke Ibu</h3>
+              <p>
+                Dimas segera memberitahu ibunya. "Bu, ada jentik nyamuk di
+                pot! Itu bisa jadi nyamuk DBD!" Ibu tersenyum bangga.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="story-slide" data-slide="4">
+            <div class="slide-image">
+              <div class="slide-illustration">
+                <span class="story-emoji">👨‍👩‍👦🪣✨</span>
+              </div>
+            </div>
+            <div class="slide-content">
+              <h3>Beraksi Bersama!</h3>
+              <p>
+                Seluruh keluarga beraksi! Mereka menguras bak mandi, menutup
+                drum air, dan membuang barang bekas. Gerakan 3M Plus!
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="story-slide" data-slide="5">
+            <div class="slide-image">
+              <div class="slide-illustration">
+                <span class="story-emoji">🦸‍♂️🏆🌟</span>
+              </div>
+            </div>
+            <div class="slide-content">
+              <h3>Dimas Sang Jagoan!</h3>
+              <p>
+                "Kamu hebat, Dimas! Sekarang kamu adalah Jagoan DBD yang
+                melindungi keluarga!" kata Ayah sambil memberikan jempol.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-controls">
+          <button class="story-btn prev" id="prevBtn" onclick="changeSlide(-1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+            Sebelumnya
+          </button>
+          <div class="story-progress">
+            <span id="currentSlide">1</span> / <span id="totalSlides">5</span>
+          </div>
+          <button class="story-btn next" id="nextBtn" onclick="changeSlide(1)">
+            Selanjutnya
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="story-dots">
+          <span class="dot active" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+          <span class="dot" onclick="goToSlide(4)"></span>
+          <span class="dot" onclick="goToSlide(5)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="section section-light" id="video">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">🎬 Video Seru!</span>
+        <h2 class="section-title">Video Edukasi</h2>
+        <p class="section-subtitle">Tonton video menarik tentang DBD!</p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card glass-card">
+          <div class="video-thumbnail">
+            <div class="video-placeholder">
+              <span class="video-emoji">🦟📚</span>
+              <div class="play-button">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="video-duration">5:30</span>
+          </div>
+          <div class="video-info">
+            <h3>Mengenal Nyamuk Aedes Aegypti</h3>
+            <p>Yuk kenali ciri-ciri nyamuk penyebab DBD!</p>
+          </div>
+        </div>
+
+        <div class="video-card glass-card">
+          <div class="video-thumbnail">
+            <div class="video-placeholder">
+              <span class="video-emoji">🌡️💊</span>
+              <div class="play-button">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="video-duration">4:15</span>
+          </div>
+          <div class="video-info">
+            <h3>Gejala DBD yang Harus Diwaspadai</h3>
+            <p>Pelajari tanda-tanda demam berdarah!</p>
+          </div>
+        </div>
+
+        <div class="video-card glass-card">
+          <div class="video-thumbnail">
+            <div class="video-placeholder">
+              <span class="video-emoji">🪣♻️</span>
+              <div class="play-button">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="video-duration">6:00</span>
+          </div>
+          <div class="video-info">
+            <h3>Cara Melakukan 3M Plus</h3>
+            <p>Tutorial pencegahan DBD di rumah!</p>
+          </div>
+        </div>
+
+        <div class="video-card glass-card">
+          <div class="video-thumbnail">
+            <div class="video-placeholder">
+              <span class="video-emoji">🦸‍♂️🏆</span>
+              <div class="play-button">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="video-duration">3:45</span>
+          </div>
+          <div class="video-info">
+            <h3>Menjadi Jagoan Anti DBD</h3>
+            <p>Lagu dan gerak seru untuk anak-anak!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-note glass-card">
+        <span class="note-icon">💡</span>
+        <p>
+          Video akan segera tersedia! Untuk sementara, yuk belajar melalui
+          materi bacaan dan quiz interaktif di bawah!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section class="section section-gradient" id="quiz">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-badge">🎮 Waktunya Bermain!</span>
+        <h2 class="section-title">Quiz Interaktif</h2>
+        <p class="section-subtitle">
+          Uji pengetahuanmu dan dapatkan badge Jagoan DBD! ⭐
+        </p>
+      </div>
+
+      <div class="quiz-container glass-card" id="quizContainer">
+        <!-- Quiz Start Screen -->
+        <div class="quiz-start" id="quizStart">
+          <div class="quiz-mascot-intro">
+            <img src="assets/mascot-dbd.png" alt="Mascot Quiz Master" class="quiz-mascot" />
+            <div class="mascot-speech quiz-speech">
+              <p>🎮 Waktunya uji pengetahuanmu!</p>
+              <p>Siap jadi <strong>Jagoan DBD</strong>?</p>
+            </div>
+          </div>
+          <h3>Siap Menjadi Jagoan?</h3>
+          <p>
+            Jawab 10 pertanyaan tentang DBD dan kumpulkan bintang untuk
+            mendapatkan badge Jagoan DBD!
+          </p>
+          <div class="quiz-rules">
+            <div class="rule-item">
+              <span>✓</span> 10 pertanyaan pilihan ganda
+            </div>
+            <div class="rule-item">
+              <span>⭐</span> Setiap jawaban benar = 1 bintang
+            </div>
+            <div class="rule-item">
+              <span>🏆</span> 8+ bintang = Badge Jagoan DBD
+            </div>
+          </div>
+          <button class="btn btn-primary btn-large" onclick="startQuiz()">
+            Mulai Quiz! 🚀
+          </button>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div class="quiz-game hidden" id="quizGame">
+          <div class="quiz-header">
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="quizProgressFill"></div>
+            </div>
+            <div class="quiz-info">
+              <span class="quiz-question-num">Pertanyaan <span id="questionNum">1</span>/10</span>
+              <span class="quiz-score">⭐ <span id="scoreDisplay">0</span></span>
+            </div>
+          </div>
+
+          <div class="quiz-question" id="quizQuestion">
+            <!-- Question content will be inserted by JS -->
+          </div>
+
+          <div class="quiz-options" id="quizOptions">
+            <!-- Options will be inserted by JS -->
+          </div>
+
+          <div class="quiz-feedback hidden" id="quizFeedback">
+            <!-- Feedback will be inserted by JS -->
+          </div>
+
+          <button class="btn btn-primary hidden" id="nextQuestionBtn" onclick="nextQuestion()">
+            Pertanyaan Berikutnya →
+          </button>
+        </div>
+
+        <!-- Quiz Result -->
+        <div class="quiz-result hidden" id="quizResult">
+          <div class="result-content">
+            <div class="result-mascot-section">
+              <img src="assets/mascot-dbd.png" alt="Mascot" class="result-mascot" />
+              <div class="mascot-speech result-speech" id="resultSpeech">
+                <p>🎉 Luar biasa! Kamu hebat!</p>
+              </div>
+            </div>
+            <div class="result-badge" id="resultBadge">🏆</div>
+            <h3 id="resultTitle">Selamat!</h3>
+            <p id="resultMessage">Kamu adalah Jagoan DBD sejati!</p>
+            <div class="result-score">
+              <span class="score-stars" id="resultStars">⭐⭐⭐⭐⭐</span>
+              <span class="score-text" id="resultScoreText">10/10 Bintang</span>
+            </div>
+            <div class="result-actions">
+              <button class="btn btn-primary" onclick="restartQuiz()">
+                🔄 Main Lagi
+              </button>
+              <button class="btn btn-secondary" onclick="shareResult()">
+                📤 Bagikan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/mascot-dbd.png" alt="Mascot" class="footer-mascot" />
+          <span class="logo-text">Aku Jagoan DBD</span>
+          <p>
+            Website edukasi interaktif tentang Demam Berdarah Dengue untuk
+            anak-anak Indonesia.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="#kenali">Kenali DBD</a></li>
+            <li><a href="#gejala">Gejala</a></li>
+            <li><a href="#pencegahan">Pencegahan</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Informasi</h4>
+          <p>
+            Website ini dibuat untuk tujuan edukasi kesehatan anak-anak
+            tentang bahaya dan pencegahan Demam Berdarah Dengue (DBD).
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2026 Aku Jagoan DBD - Tugas UAS Desain Komunikasi dan Multimedia
+        </p>
+        <p>Dibuat dengan ❤️ untuk anak-anak Indonesia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quiz Modal Overlay -->
+  <div class="quiz-modal-overlay" id="quizModalOverlay">
+    <div class="quiz-modal" id="quizModal">
+      <!-- Modal Header -->
+      <div class="quiz-modal-header">
+        <div class="quiz-modal-title">
+          <img src="assets/mascot-dbd.png" alt="Mascot" />
+          <span>🎮 Quiz Jagoan DBD</span>
+        </div>
+        <button class="quiz-modal-close" onclick="closeQuizModal()" aria-label="Close">
+          ×
+        </button>
+      </div>
+
+      <!-- Modal Body - Content will be dynamically inserted by JS -->
+      <div class="quiz-modal-body" id="quizModalBody">
+        <!-- Start Screen, Questions, and Results will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
 </html>

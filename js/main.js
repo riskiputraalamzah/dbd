@@ -104,6 +104,164 @@ function updateProgress() {
     }
 }
 
+// ============================================
+// SPOTLIGHT TUTORIAL EFFECT
+// ============================================
+let spotlightShown = false;
+
+function initSpotlightTutorial() {
+    const preventionGrid = document.querySelector('.prevention-grid');
+    const firstPreventionBtn = document.querySelector('.prevention-item .prevention-btn');
+
+    if (!preventionGrid || !firstPreventionBtn) return;
+
+    // Check if tutorial already shown in this session
+    if (sessionStorage.getItem('spotlightShown')) return;
+
+    const spotlightObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !spotlightShown) {
+                spotlightShown = true;
+
+                // Delay before showing spotlight
+                setTimeout(() => {
+                    showSpotlight(firstPreventionBtn);
+                }, 500);
+
+                spotlightObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '100px 0px 0px 0px'
+    });
+
+    spotlightObserver.observe(preventionGrid);
+}
+
+function showSpotlight(targetBtn) {
+    const targetCard = targetBtn.closest('.prevention-item');
+    if (!targetCard) return;
+
+    // First scroll the card into center view
+    targetCard.scrollIntoView({ behavior: 'instant', block: 'center' });
+
+    // Add pulse effect to button
+    targetBtn.classList.add('pulse-effect');
+
+    // Small delay to ensure scroll is complete before calculating positions
+    setTimeout(() => {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'spotlight-overlay';
+        overlay.id = 'spotlightOverlay';
+
+        // Get positions AFTER scroll
+        const cardRect = targetCard.getBoundingClientRect();
+        const btnRect = targetBtn.getBoundingClientRect();
+        const padding = 10;
+
+        // Create highlight element (around the CARD)
+        const highlight = document.createElement('div');
+        highlight.className = 'spotlight-highlight entering';
+        highlight.style.cssText = `
+            top: ${cardRect.top - padding}px;
+            left: ${cardRect.left - padding}px;
+            width: ${cardRect.width + padding * 2}px;
+            height: ${cardRect.height + padding * 2}px;
+            border-radius: 24px; 
+        `;
+
+        // Create pointing hand - position pointing at the BUTTON
+        const pointer = document.createElement('div');
+        pointer.className = 'spotlight-pointer';
+        // HTML content will be handled by CSS ::after or background image for better quality
+        // or we can use an SVG here directly
+        pointer.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" class="hand-cursor-svg">
+                <path d="M7 19.3333L2.33333 3L22 10.6667L12.6667 12.6667L7 19.3333Z" fill="#FFC107" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+        `;
+
+        pointer.style.cssText = `
+            top: ${btnRect.top + btnRect.height / 2}px;
+            left: ${btnRect.left + btnRect.width / 2}px;
+        `;
+
+        // Create tooltip - position above the CARD (or button if preferred)
+        // Let's position it above the CARD to avoid cluttering the button area
+        const tooltip = document.createElement('div');
+        tooltip.className = 'spotlight-tooltip';
+        tooltip.innerHTML = '✨ <strong>Mulai dari sini!</strong><br>Klik tombol ini jika sudah selesai menguras!';
+
+        // Position tooltip relative to card top
+        tooltip.style.cssText = `
+            top: ${cardRect.top - 100}px;
+            left: ${cardRect.left + cardRect.width / 2}px;
+            transform: translateX(-50%);
+        `;
+
+        // Create skip button
+        const skipBtn = document.createElement('button');
+        skipBtn.className = 'spotlight-skip';
+        skipBtn.innerHTML = '✕ Mengerti, Lewati';
+        skipBtn.style.pointerEvents = 'auto'; // Force enablement
+        skipBtn.style.zIndex = '10005'; // Force highest z-index
+
+        skipBtn.onclick = (e) => {
+            e.stopPropagation(); // Prevent bubbling
+            hideSpotlight();
+        };
+
+        // Append elements
+        document.body.appendChild(overlay);
+        document.body.appendChild(highlight);
+        document.body.appendChild(pointer);
+        document.body.appendChild(tooltip);
+        document.body.appendChild(skipBtn);
+
+        // Activate overlay
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 50);
+
+        // Click handlers - DON'T add onclick to overlay, it blocks skipBtn
+        // Only allow clicking the highlighted card area or the skip button
+        highlight.onclick = hideSpotlight;
+        // Remove overlay.onclick - it was intercepting all clicks!
+        overlay.style.pointerEvents = 'none'; // Let clicks pass through to skipBtn
+        targetBtn.addEventListener('click', hideSpotlight, { once: true });
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }, 100);
+}
+
+function hideSpotlight() {
+    const overlay = document.getElementById('spotlightOverlay');
+    const highlight = document.querySelector('.spotlight-highlight');
+    const pointer = document.querySelector('.spotlight-pointer');
+    const tooltip = document.querySelector('.spotlight-tooltip');
+    const skipBtn = document.querySelector('.spotlight-skip');
+
+    // Remove pulse effect from button
+    const pulsedBtn = document.querySelector('.pulse-effect');
+    if (pulsedBtn) pulsedBtn.classList.remove('pulse-effect');
+
+    // Remove all spotlight elements from DOM
+    if (overlay) overlay.remove();
+    if (highlight) highlight.remove();
+    if (pointer) pointer.remove();
+    if (tooltip) tooltip.remove();
+    if (skipBtn) skipBtn.remove();
+
+    // Restore body scroll
+    document.body.style.overflow = '';
+
+    // Mark as shown in session storage
+    sessionStorage.setItem('spotlightShown', 'true');
+}
+
 function createConfetti(element) {
     const colors = ['#f43f5e', '#fbbf24', '#34d399', '#60a5fa', '#a78bfa'];
 
@@ -431,6 +589,11 @@ function selectAnswerModal(selectedIndex) {
     feedbackEl.style.display = 'block';
     footerEl.style.display = 'flex';
 
+    // Auto-scroll to feedback so user sees explanation and next button
+    setTimeout(() => {
+        feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+
     // Update stepper
     updateStepper();
 }
@@ -720,6 +883,160 @@ document.querySelectorAll('.video-card').forEach(card => {
 });
 
 // ============================================
+// TYPING EFFECT FOR MASCOT GUIDE
+// ============================================
+function initTypingEffect() {
+    const guideSpeechElements = document.querySelectorAll('.guide-speech p');
+
+    guideSpeechElements.forEach(speechEl => {
+        // Store original HTML content
+        const originalHTML = speechEl.innerHTML;
+        speechEl.setAttribute('data-original', originalHTML);
+        speechEl.classList.add('typing-ready');
+
+        // Clear the text initially - show empty until typing starts
+        speechEl.innerHTML = '';
+    });
+
+    // Create Intersection Observer for typing effect
+    const typingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const speechEl = entry.target;
+
+                // Only trigger if not already typed
+                if (speechEl.classList.contains('typing-ready') && !speechEl.classList.contains('typing-done')) {
+                    speechEl.classList.remove('typing-ready');
+                    speechEl.classList.add('typing-active');
+
+                    // Start typing effect
+                    startTypingAnimation(speechEl);
+
+                    // Unobserve after triggering
+                    typingObserver.unobserve(speechEl);
+                }
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    // Observe all speech elements
+    guideSpeechElements.forEach(speechEl => {
+        typingObserver.observe(speechEl);
+    });
+}
+
+function startTypingAnimation(element) {
+    const originalHTML = element.getAttribute('data-original');
+
+    // Parse HTML to extract text and HTML tags
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalHTML;
+
+    // Get the full text content
+    const fullText = tempDiv.textContent || tempDiv.innerText;
+
+    // Clear the element and add cursor
+    element.innerHTML = '<span class="typing-cursor">|</span>';
+
+    let charIndex = 0;
+    let currentHTML = '';
+    let htmlIndex = 0;
+    let insideTag = false;
+    let tagBuffer = '';
+
+    const typingSpeed = 30; // milliseconds per character
+
+    function typeNextChar() {
+        if (htmlIndex < originalHTML.length) {
+            const char = originalHTML[htmlIndex];
+
+            if (char === '<') {
+                // Start of HTML tag
+                insideTag = true;
+                tagBuffer = char;
+                htmlIndex++;
+                typeNextChar();
+                return;
+            } else if (char === '>') {
+                // End of HTML tag
+                insideTag = false;
+                tagBuffer += char;
+                currentHTML += tagBuffer;
+                tagBuffer = '';
+                htmlIndex++;
+                typeNextChar();
+                return;
+            } else if (insideTag) {
+                // Inside HTML tag, add to buffer
+                tagBuffer += char;
+                htmlIndex++;
+                typeNextChar();
+                return;
+            } else {
+                // Regular character
+                currentHTML += char;
+                htmlIndex++;
+                element.innerHTML = currentHTML + '<span class="typing-cursor">|</span>';
+
+                // Continue typing
+                if (htmlIndex < originalHTML.length) {
+                    setTimeout(typeNextChar, typingSpeed);
+                } else {
+                    // Typing complete
+                    finishTyping();
+                }
+            }
+        } else {
+            finishTyping();
+        }
+    }
+
+    function finishTyping() {
+        // Remove cursor after a delay
+        setTimeout(() => {
+            element.innerHTML = originalHTML;
+            element.classList.remove('typing-active');
+            element.classList.add('typing-done');
+        }, 500);
+    }
+
+    // Start with a small delay
+    setTimeout(typeNextChar, 300);
+}
+
+// Add typing cursor styles dynamically
+const typingStyles = document.createElement('style');
+typingStyles.textContent = `
+    .typing-cursor {
+        display: inline;
+        animation: cursorBlink 0.7s infinite;
+        font-weight: normal;
+        color: var(--primary-500);
+    }
+    
+    @keyframes cursorBlink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+    
+    .typing-ready {
+        visibility: visible;
+    }
+    
+    .typing-active {
+        min-height: 1.6em;
+    }
+    
+    .typing-done {
+        visibility: visible;
+    }
+`;
+document.head.appendChild(typingStyles);
+
+// ============================================
 // INITIALIZE
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -731,6 +1048,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial active nav link
     updateActiveNavLink();
+
+    // Initialize typing effect for mascot guide
+    initTypingEffect();
+
+    // Initialize spotlight tutorial for prevention section
+    initSpotlightTutorial();
 
     console.log('🦸 Aku Jagoan DBD - Website loaded successfully!');
 });
