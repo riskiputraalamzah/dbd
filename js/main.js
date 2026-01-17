@@ -908,14 +908,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ============================================
-// VIDEO CARD CLICK HANDLER (Placeholder)
-// ============================================
-document.querySelectorAll('.video-card').forEach(card => {
-    card.addEventListener('click', () => {
-        alert('🎬 Video akan segera tersedia!\n\nUntuk sementara, yuk belajar melalui materi bacaan dan quiz interaktif!');
-    });
-});
+
 
 // ============================================
 // TYPING EFFECT FOR MASCOT GUIDE
@@ -1092,3 +1085,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('🦸 Aku Jagoan DBD - Website loaded successfully!');
 });
+
+
+/* ============================================
+   VIDEO PLAYER FUNCTIONALITY (INLINE)
+   ============================================ */
+function playInlineVideo(buttonElement, type, source) {
+    // Find the container (video-placeholder)
+    const placeholder = buttonElement.parentElement;
+    const thumbnailContainer = placeholder.parentElement;
+
+    // Create the video container
+    const playerContainer = document.createElement('div');
+    playerContainer.className = 'video-player-container fade-in';
+
+    if (type === 'local') {
+        // Create Video Element
+        const video = document.createElement('video');
+        video.src = source;
+        video.controls = true;
+        video.autoplay = true;
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.borderRadius = 'var(--radius-md)';
+        playerContainer.appendChild(video);
+    } else if (type === 'youtube') {
+        // Create YouTube Iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${source}?autoplay=1&rel=0`;
+        iframe.title = "YouTube video player";
+        iframe.frameBorder = "0";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.borderRadius = 'var(--radius-md)';
+        playerContainer.appendChild(iframe);
+    }
+
+    // Hide the placeholder content (image & button)
+    placeholder.style.display = 'none';
+
+    // Append the player
+    thumbnailContainer.appendChild(playerContainer);
+
+    // Hide the duration badge if it exists
+    const durationBadge = thumbnailContainer.querySelector('.video-duration');
+    if (durationBadge) {
+        durationBadge.style.display = 'none';
+    }
+}

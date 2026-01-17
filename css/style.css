@@ -2050,6 +2050,22 @@ ol {
     }
 }
 
+
+/* ============================================
+   VIDEO PLAYER STYLES (INLINE)
+   ============================================ */
+.video-player-container {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: black;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
 /* ============================================
    MASCOT STYLES
    ============================================ */

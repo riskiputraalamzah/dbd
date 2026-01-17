@@ -593,13 +593,13 @@
           <div class="video-thumbnail">
             <div class="video-placeholder">
               <span class="video-emoji">🦟📚</span>
-              <div class="play-button">
+              <div class="play-button" onclick="playInlineVideo(this, 'local', 'assets/videos/video1.mp4')">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </div>
-            <span class="video-duration">5:30</span>
+            <span class="video-duration">0:21</span>
           </div>
           <div class="video-info">
             <h3>Mengenal Nyamuk Aedes Aegypti</h3>
@@ -611,13 +611,13 @@
           <div class="video-thumbnail">
             <div class="video-placeholder">
               <span class="video-emoji">🌡️💊</span>
-              <div class="play-button">
+              <div class="play-button" onclick="playInlineVideo(this, 'local', 'assets/videos/video2.mp4')">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </div>
-            <span class="video-duration">4:15</span>
+            <span class="video-duration">0:36</span>
           </div>
           <div class="video-info">
             <h3>Gejala DBD yang Harus Diwaspadai</h3>
@@ -629,7 +629,7 @@
           <div class="video-thumbnail">
             <div class="video-placeholder">
               <span class="video-emoji">🪣♻️</span>
-              <div class="play-button">
+              <div class="play-button" onclick="playInlineVideo(this, 'youtube', 'W0_qG_d_xTo')">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -647,7 +647,7 @@
           <div class="video-thumbnail">
             <div class="video-placeholder">
               <span class="video-emoji">🦸‍♂️🏆</span>
-              <div class="play-button">
+              <div class="play-button" onclick="playInlineVideo(this, 'youtube', 'sS9-oY5_3dE')">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -665,8 +665,8 @@
       <div class="video-note glass-card">
         <span class="note-icon">💡</span>
         <p>
-          Video akan segera tersedia! Untuk sementara, yuk belajar melalui
-          materi bacaan dan quiz interaktif di bawah!
+          Klik tombol <strong>Play</strong> untuk menonton video langsung. Tekan tombol <strong>Fullscreen</strong> pada
+          player untuk memperbesar video!
         </p>
       </div>
     </div>
@@ -798,15 +798,13 @@
           <h4>Informasi</h4>
           <p>
             Website ini dibuat untuk tujuan edukasi kesehatan anak-anak
-            tentang bahaya dan pencegahan Demam Berdarah Dengue (DBD).
+            sekolah dasar.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>
-          © 2026 Aku Jagoan DBD - Tugas UAS Desain Komunikasi dan Multimedia
-        </p>
-        <p>Dibuat dengan ❤️ untuk anak-anak Indonesia</p>
+        <p>&copy; 2024 Aku Jagoan DBD. All rights reserved.</p>
+        <p>Made with ❤️ by Riski Putra Alamzah</p>
       </div>
     </div>
   </footer>
@@ -828,6 +826,18 @@
       <!-- Modal Body - Content will be dynamically inserted by JS -->
       <div class="quiz-modal-body" id="quizModalBody">
         <!-- Start Screen, Questions, and Results will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal-container">
+      <button class="video-modal-close" onclick="closeVideoModal()">×</button>
+      <div class="video-wrapper">
+        <iframe id="videoFrame" src="" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
