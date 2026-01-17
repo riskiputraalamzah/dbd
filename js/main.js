@@ -701,24 +701,59 @@ function restartQuizModal() {
     showQuizStartScreen();
 }
 
-// Share Result
+// Share Result to WhatsApp
 function shareResultModal() {
-    const text = `🦸 Aku mendapat ${score}/10 bintang di Quiz Aku Jagoan DBD! Ayo main juga dan jadi Jagoan Anti DBD! 🎮`;
+    // Pesan motivasi berdasarkan jumlah bintang
+    let motivasi = '';
 
-    if (navigator.share) {
-        navigator.share({
-            title: 'Aku Jagoan DBD - Hasil Quiz',
-            text: text,
-            url: window.location.href
-        }).catch(console.error);
+    if (score >= 9) {
+        // 9-10 bintang - Sempurna!
+        motivasi = 'SEMPURNA! Aku adalah Jagoan DBD sejati! Pengetahuanku tentang pencegahan DBD sangat luar biasa! Terus jaga kesehatan dan lindungi keluarga dari nyamuk jahat!';
+    } else if (score === 8) {
+        // 8 bintang - Luar Biasa!
+        motivasi = 'LUAR BIASA! Sedikit lagi sempurna! Aku sudah sangat paham tentang DBD dan siap jadi pelindung keluarga! Terus semangat belajar ya!';
+    } else if (score >= 6) {
+        // 6-7 bintang - Bagus!
+        motivasi = 'BAGUS SEKALI! Aku sudah cukup paham tentang DBD. Terus belajar dan praktekkan 3M Plus di rumah! Pasti bisa jadi Jagoan DBD!';
+    } else if (score >= 4) {
+        // 4-5 bintang - Semangat!
+        motivasi = 'SEMANGAT! Setiap langkah adalah kemajuan! Yuk baca lagi materi tentang DBD dan coba quiz lagi. Aku yakin bisa lebih baik!';
     } else {
-        // Fallback: copy to clipboard
-        navigator.clipboard.writeText(text).then(() => {
-            alert('Teks berhasil disalin! Bagikan ke teman-temanmu ya!');
-        }).catch(() => {
-            alert('Bagikan hasil quiz ini ke teman-temanmu!');
-        });
+        // 0-3 bintang - Jangan Menyerah!
+        motivasi = 'JANGAN MENYERAH! Belajar itu proses. Yuk pelajari lagi tentang DBD dan coba quiz sekali lagi. Setiap orang bisa jadi Jagoan DBD!';
     }
+
+    // Buat bintang dengan karakter Unicode sederhana
+    let starsDisplay = '';
+    for (let i = 0; i < score; i++) {
+        starsDisplay += '★';  // Black star (U+2605)
+    }
+    for (let i = score; i < 10; i++) {
+        starsDisplay += '☆';  // White star (U+2606)
+    }
+
+    // Buat pesan untuk WhatsApp
+    const websiteUrl = 'https://riskiputraalamzah.github.io/dbd/';
+    const text = `*AKU JAGOAN DBD!*
+
+Yeay! Aku berhasil menyelesaikan Quiz Aku Jagoan DBD!
+
+*Hasil Quiz:* ${score}/10 Bintang
+${starsDisplay}
+
+${motivasi}
+
+Yuk main juga dan uji pengetahuanmu tentang Demam Berdarah!
+${websiteUrl}
+
+#AkuJagoanDBD #CegahDBD #3MPlus`;
+
+    // Encode text untuk URL WhatsApp
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/?text=${encodedText}`;
+
+    // Buka WhatsApp
+    window.open(whatsappUrl, '_blank');
 }
 
 // Create Quiz Confetti
