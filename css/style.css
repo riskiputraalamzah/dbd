@@ -675,13 +675,17 @@ ol {
    GEJALA SECTION
    ============================================ */
 .symptoms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-2xl);
 }
 
 .symptom-card {
+    flex: 1 1 250px;
+    max-width: 350px;
+    /* Mencegah terlalu lebar saat sendirian */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -728,27 +732,135 @@ ol {
     color: #fde68a;
 }
 
+/* Specificity fix: Target context to override glass-card */
+.section-dark .alert-box,
 .alert-box {
     display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-lg);
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(251, 191, 36, 0.2));
-    border: 2px solid rgba(239, 68, 68, 0.3);
+    align-items: center;
+    gap: var(--spacing-xl);
+    /* High Contrast Background */
+    background: linear-gradient(135deg, #ffffff 0%, #fff1f2 100%);
+    border: 4px solid #f43f5e;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
+    position: relative;
+    /* Strong Shadow for pop effect */
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 4px rgba(244, 63, 94, 0.3);
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform 0.3s ease;
+}
+
+.alert-box:hover {
+    transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+}
+
+.alert-box::before {
+    content: '🚨 PERHATIAN!';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f43f5e, #be123c);
+    color: white;
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 8px 24px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    z-index: 10;
 }
 
 .alert-icon {
-    font-size: 3rem;
+    font-size: 5rem;
     flex-shrink: 0;
+    filter: drop-shadow(0 10px 10px rgba(244, 63, 94, 0.2));
+    animation: pulseIcon 2s infinite ease-in-out;
 }
 
+@keyframes pulseIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.section-dark .alert-box h3,
 .alert-content h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 900;
     margin-bottom: var(--spacing-sm);
+    /* Vibrant Gradient Text */
+    background: linear-gradient(135deg, #be123c 0%, #f43f5e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
 }
 
+.section-dark .alert-box p,
 .alert-content p {
-    color: var(--neutral-300);
+    color: #4b5563;
+    /* Dark Grey Contrast */
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Mobile - centered layout */
+@media (max-width: 768px) {
+
+    .section-dark .alert-box,
+    .alert-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-xl);
+        padding-top: var(--spacing-3xl);
+        margin-top: var(--spacing-3xl);
+        transform: none;
+    }
+
+    .alert-box:hover {
+        transform: none;
+    }
+
+    .alert-box::before {
+        top: -15px;
+        font-size: 0.9rem;
+        padding: 6px 20px;
+    }
+
+    .alert-icon {
+        font-size: 5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .section-dark .alert-box h3,
+    .alert-content h3 {
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .section-dark .alert-box p,
+    .alert-content p {
+        font-size: 1rem;
+    }
 }
 
 /* ============================================
@@ -1095,12 +1207,15 @@ ol {
 }
 
 .plus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-md);
 }
 
 .plus-item {
+    flex: 1 1 200px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
