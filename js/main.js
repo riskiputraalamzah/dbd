@@ -1240,14 +1240,16 @@ function initAudioSystem() {
         startBackgroundMusic();
     }
 
-    // Set up section observer for narration
+    // Set current section to home FIRST to prevent duplicate from observer
+    AudioManager.currentSection = 'home';
+
+    // Set up section observer for narration (won't trigger home because currentSection is already set)
     setupSectionObserver();
 
     // Speak welcome message
     if (AudioManager.voiceEnabled) {
         setTimeout(() => {
             speakNarration(sectionNarrations['home']);
-            AudioManager.currentSection = 'home';
         }, 800);
     }
 
@@ -1336,10 +1338,10 @@ function speakNarration(text) {
     // Cancel any ongoing speech first
     responsiveVoice.cancel();
 
-    // Voice parameters for young cartoon boy voice
+    // Voice parameters for happy energetic young boy (anak kecil laki-laki gembira & semangat)
     const voiceParams = {
-        pitch: 1.3,   // Higher pitch for young boy
-        rate: 1.0,    // Normal speed
+        pitch: 1.4,   // Higher pitch for young boy voice
+        rate: 1.1,    // Slightly faster for energetic/happy mood
         volume: 1,
         onstart: () => {
             AudioManager.isSpeaking = true;
@@ -1360,9 +1362,8 @@ function speakNarration(text) {
         }
     };
 
-    // Use Indonesian Female voice with high pitch for young boy effect
-    // ResponsiveVoice doesn't have Indonesian Male, but Female with high pitch sounds like young boy
-    responsiveVoice.speak(text, "Indonesian Female", voiceParams);
+    // Use Indonesian Male voice as selected in ResponsiveVoice dashboard
+    responsiveVoice.speak(text, "Indonesian Male", voiceParams);
 }
 
 // Fallback to Web Speech API if ResponsiveVoice fails
