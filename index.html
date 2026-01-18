@@ -635,7 +635,7 @@
                 </svg>
               </div>
             </div>
-            <span class="video-duration">6:00</span>
+            <span class="video-duration">0:34</span>
           </div>
           <div class="video-info">
             <h3>Cara Melakukan 3M Plus</h3>
@@ -647,13 +647,13 @@
           <div class="video-thumbnail">
             <div class="video-placeholder">
               <span class="video-emoji">🦸‍♂️🏆</span>
-              <div class="play-button" onclick="playInlineVideo(this, 'youtube', 'sS9-oY5_3dE')">
+              <div class="play-button" onclick="playInlineVideo(this, 'local', 'assets/videos/video4.mp4')">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </div>
-            <span class="video-duration">3:45</span>
+            <span class="video-duration">0:38</span>
           </div>
           <div class="video-info">
             <h3>Menjadi Jagoan Anti DBD</h3>
@@ -830,8 +830,58 @@
     </div>
   </div>
 
+  <!-- Audio Welcome Modal -->
+  <div class="audio-welcome-modal" id="audioWelcomeModal">
+    <div class="audio-welcome-content">
+      <div class="audio-welcome-mascot">
+        <img src="assets/mascot-dbd.png" alt="Mascot Jagoan DBD" />
+        <div class="mascot-wave">👋</div>
+      </div>
+      <h2>🎵 Halo Jagoan!</h2>
+      <p>Mau dengar cerita tentang DBD dengan <strong>suara dan musik seru</strong>?</p>
+      <div class="audio-welcome-buttons">
+        <button class="audio-btn-yes" onclick="activateAudio()">
+          <span class="btn-icon">🔊</span>
+          <span>Ya, Mulai!</span>
+        </button>
+        <button class="audio-btn-no" onclick="skipAudio()">
+          <span class="btn-icon">🔇</span>
+          <span>Tidak, Terima Kasih</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Floating Audio Control -->
+  <div class="audio-control" id="audioControl">
+    <button class="audio-main-btn" id="audioMainBtn" title="Kontrol Audio">
+      <span class="audio-icon">🎵</span>
+      <span class="audio-pulse"></span>
+    </button>
+    <div class="audio-menu" id="audioMenu">
+      <div class="audio-menu-item" id="musicToggle">
+        <span class="menu-icon">🎵</span>
+        <span class="menu-label">Musik</span>
+        <span class="toggle-indicator on" id="musicIndicator">ON</span>
+      </div>
+      <div class="audio-menu-item" id="voiceToggle">
+        <span class="menu-icon">🗣️</span>
+        <span class="menu-label">Narasi</span>
+        <span class="toggle-indicator on" id="voiceIndicator">ON</span>
+      </div>
+      <div class="audio-menu-item" id="replayVoice">
+        <span class="menu-icon">🔄</span>
+        <span class="menu-label">Ulangi</span>
+      </div>
+      <div class="audio-menu-item audio-close" id="audioClose">
+        <span class="menu-icon">✕</span>
+        <span class="menu-label">Tutup</span>
+      </div>
+    </div>
+  </div>
 
+  <!-- ResponsiveVoice.js for better TTS quality -->
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=6dkSueeo"></script>
   <script src="js/main.js"></script>
 </body>
 

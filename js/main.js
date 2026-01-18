@@ -1135,3 +1135,446 @@ function playInlineVideo(buttonElement, type, source) {
         durationBadge.style.display = 'none';
     }
 }
+
+/* ============================================
+   INTERACTIVE AUDIO SYSTEM
+   Voice Narration + Background Music
+   ============================================ */
+
+// Audio Manager State
+const AudioManager = {
+    isActive: false,
+    musicEnabled: true,
+    voiceEnabled: true,
+    currentSection: null,
+    isSpeaking: false,
+    audioContext: null,
+    gainNode: null,
+    oscillators: [],
+    musicLoop: null
+};
+
+// Section Narration Scripts (child-friendly Indonesian)
+const sectionNarrations = {
+    'home': 'Halo teman-teman! Selamat datang di Aku Jagoan DBD! Yuk kita belajar cara melawan demam berdarah bersama-sama!',
+    'kenali': 'Di bagian ini, kita akan mengenal apa itu penyakit demam berdarah, dan nyamuk yang menyebabkannya. Yuk simak!',
+    'gejala': 'Ini penting banget! Kenali gejala-gejala demam berdarah agar bisa segera diobati. Kalau ada gejala seperti ini, segera bilang ke orang tua ya!',
+    'pencegahan': 'Sekarang kita belajar cara mencegah DBD dengan gerakan 3M Plus! Ingat selalu ya, Menguras, Menutup, dan Mendaur ulang!',
+    'cerita': 'Wah, ada cerita seru nih! Yuk simak petualangan Dimas jadi Jagoan DBD!',
+    'video': 'Bagian ini ada video-video menarik tentang DBD. Tonton yuk!',
+    'quiz': 'Waktunya uji pengetahuan! Siap jadi Jagoan DBD sejati? Ayo mulai quiz-nya!'
+};
+
+// Audio Welcome Modal Elements
+const audioWelcomeModal = document.getElementById('audioWelcomeModal');
+const audioControl = document.getElementById('audioControl');
+const audioMainBtn = document.getElementById('audioMainBtn');
+const audioMenu = document.getElementById('audioMenu');
+const musicToggle = document.getElementById('musicToggle');
+const voiceToggle = document.getElementById('voiceToggle');
+const replayVoice = document.getElementById('replayVoice');
+const audioClose = document.getElementById('audioClose');
+const musicIndicator = document.getElementById('musicIndicator');
+const voiceIndicator = document.getElementById('voiceIndicator');
+
+// Check if user has already made audio choice
+function checkAudioPreference() {
+    const audioChoice = sessionStorage.getItem('audioChoice');
+    if (audioChoice === 'skip') {
+        // User chose to skip audio
+        audioWelcomeModal.classList.add('hidden');
+    } else if (audioChoice === 'activate') {
+        // User already activated audio
+        audioWelcomeModal.classList.add('hidden');
+        audioControl.classList.add('active');
+        AudioManager.isActive = true;
+        initAudioSystem();
+    }
+    // If no choice yet, modal will show
+}
+
+// Activate Audio System
+function activateAudio() {
+    audioWelcomeModal.classList.add('hidden');
+    audioControl.classList.add('active');
+    AudioManager.isActive = true;
+    sessionStorage.setItem('audioChoice', 'activate');
+
+    // Initialize audio with delay for animation
+    setTimeout(() => {
+        initAudioSystem();
+    }, 500);
+}
+
+// Skip Audio
+function skipAudio() {
+    audioWelcomeModal.classList.add('hidden');
+    sessionStorage.setItem('audioChoice', 'skip');
+}
+
+// Initialize Audio System
+function initAudioSystem() {
+    // Check for Web Speech API support
+    if ('speechSynthesis' in window) {
+        // Load voices
+        let voices = speechSynthesis.getVoices();
+        if (voices.length === 0) {
+            speechSynthesis.addEventListener('voiceschanged', () => {
+                voices = speechSynthesis.getVoices();
+            });
+        }
+    }
+
+    // Initialize Web Audio API for background music
+    try {
+        AudioManager.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        AudioManager.gainNode = AudioManager.audioContext.createGain();
+        AudioManager.gainNode.connect(AudioManager.audioContext.destination);
+        AudioManager.gainNode.gain.value = 0.15; // Low volume for background
+    } catch (e) {
+        console.log('Web Audio API not supported:', e);
+    }
+
+    // Start background music
+    if (AudioManager.musicEnabled) {
+        startBackgroundMusic();
+    }
+
+    // Set up section observer for narration
+    setupSectionObserver();
+
+    // Speak welcome message
+    if (AudioManager.voiceEnabled) {
+        setTimeout(() => {
+            speakNarration(sectionNarrations['home']);
+            AudioManager.currentSection = 'home';
+        }, 800);
+    }
+
+    // Add playing animation to button
+    audioMainBtn.classList.add('playing');
+}
+
+// Background Music using Web Audio API (simple melody)
+function startBackgroundMusic() {
+    if (!AudioManager.audioContext || !AudioManager.musicEnabled) return;
+
+    // Resume audio context if suspended (browser autoplay policy)
+    if (AudioManager.audioContext.state === 'suspended') {
+        AudioManager.audioContext.resume();
+    }
+
+    // Simple child-friendly melody pattern
+    const notes = [
+        { freq: 523.25, duration: 0.3 },  // C5
+        { freq: 587.33, duration: 0.3 },  // D5
+        { freq: 659.25, duration: 0.3 },  // E5
+        { freq: 523.25, duration: 0.3 },  // C5
+        { freq: 659.25, duration: 0.3 },  // E5
+        { freq: 587.33, duration: 0.3 },  // D5
+        { freq: 523.25, duration: 0.6 },  // C5 (long)
+        { freq: 0, duration: 0.3 },       // Rest
+    ];
+
+    let noteIndex = 0;
+
+    function playNote() {
+        if (!AudioManager.musicEnabled || !AudioManager.isActive) {
+            return;
+        }
+
+        const note = notes[noteIndex];
+
+        if (note.freq > 0) {
+            const oscillator = AudioManager.audioContext.createOscillator();
+            const noteGain = AudioManager.audioContext.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.value = note.freq;
+
+            // Envelope for softer sound
+            noteGain.gain.setValueAtTime(0, AudioManager.audioContext.currentTime);
+            noteGain.gain.linearRampToValueAtTime(0.08, AudioManager.audioContext.currentTime + 0.05);
+            noteGain.gain.linearRampToValueAtTime(0.05, AudioManager.audioContext.currentTime + note.duration * 0.8);
+            noteGain.gain.linearRampToValueAtTime(0, AudioManager.audioContext.currentTime + note.duration);
+
+            oscillator.connect(noteGain);
+            noteGain.connect(AudioManager.gainNode);
+
+            oscillator.start();
+            oscillator.stop(AudioManager.audioContext.currentTime + note.duration);
+        }
+
+        noteIndex = (noteIndex + 1) % notes.length;
+
+        // Schedule next note
+        AudioManager.musicLoop = setTimeout(playNote, note.duration * 1000);
+    }
+
+    playNote();
+}
+
+// Stop Background Music
+function stopBackgroundMusic() {
+    if (AudioManager.musicLoop) {
+        clearTimeout(AudioManager.musicLoop);
+        AudioManager.musicLoop = null;
+    }
+}
+
+// Speak Narration using ResponsiveVoice.js (better quality)
+function speakNarration(text) {
+    if (!AudioManager.voiceEnabled || !AudioManager.isActive) return;
+
+    // Check if ResponsiveVoice is available
+    if (typeof responsiveVoice === 'undefined') {
+        console.log('ResponsiveVoice not loaded, falling back to Web Speech API');
+        speakNarrationFallback(text);
+        return;
+    }
+
+    // Cancel any ongoing speech first
+    responsiveVoice.cancel();
+
+    // Voice parameters for young cartoon boy voice
+    const voiceParams = {
+        pitch: 1.3,   // Higher pitch for young boy
+        rate: 1.0,    // Normal speed
+        volume: 1,
+        onstart: () => {
+            AudioManager.isSpeaking = true;
+            // Lower music volume while speaking
+            if (AudioManager.gainNode && AudioManager.audioContext) {
+                AudioManager.gainNode.gain.linearRampToValueAtTime(0.05, AudioManager.audioContext.currentTime + 0.3);
+            }
+        },
+        onend: () => {
+            AudioManager.isSpeaking = false;
+            // Restore music volume
+            if (AudioManager.gainNode && AudioManager.audioContext) {
+                AudioManager.gainNode.gain.linearRampToValueAtTime(0.15, AudioManager.audioContext.currentTime + 0.3);
+            }
+        },
+        onerror: () => {
+            AudioManager.isSpeaking = false;
+        }
+    };
+
+    // Use Indonesian Female voice with high pitch for young boy effect
+    // ResponsiveVoice doesn't have Indonesian Male, but Female with high pitch sounds like young boy
+    responsiveVoice.speak(text, "Indonesian Female", voiceParams);
+}
+
+// Fallback to Web Speech API if ResponsiveVoice fails
+function speakNarrationFallback(text) {
+    if (!('speechSynthesis' in window)) return;
+
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = speechSynthesis.getVoices();
+    const indonesianVoice = voices.find(v => v.lang.includes('id') || v.lang.includes('ID'));
+
+    if (indonesianVoice) {
+        utterance.voice = indonesianVoice;
+    }
+
+    utterance.rate = 1.0;
+    utterance.pitch = 1.5;
+    utterance.volume = 1.0;
+
+    utterance.onstart = () => {
+        AudioManager.isSpeaking = true;
+        if (AudioManager.gainNode) {
+            AudioManager.gainNode.gain.linearRampToValueAtTime(0.05, AudioManager.audioContext.currentTime + 0.3);
+        }
+    };
+
+    utterance.onend = () => {
+        AudioManager.isSpeaking = false;
+        if (AudioManager.gainNode) {
+            AudioManager.gainNode.gain.linearRampToValueAtTime(0.15, AudioManager.audioContext.currentTime + 0.3);
+        }
+    };
+
+    speechSynthesis.speak(utterance);
+}
+
+// Setup Section Observer for Auto Narration
+function setupSectionObserver() {
+    const sectionElements = document.querySelectorAll('section[id]');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -30% 0px', // Trigger when section is in center of viewport
+        threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+
+                // STRICT: If section changed, immediately stop current narration and start new one
+                if (sectionId !== AudioManager.currentSection && AudioManager.voiceEnabled && AudioManager.isActive) {
+                    // Immediately cancel any ongoing speech (ResponsiveVoice + fallback)
+                    if (typeof responsiveVoice !== 'undefined') {
+                        responsiveVoice.cancel();
+                    }
+                    if ('speechSynthesis' in window) {
+                        speechSynthesis.cancel();
+                    }
+
+                    // Update current section immediately
+                    AudioManager.currentSection = sectionId;
+
+                    // Get narration for this section and speak immediately
+                    const narration = sectionNarrations[sectionId];
+                    if (narration) {
+                        // Very short delay just for UI smoothness, but section is already set
+                        setTimeout(() => {
+                            speakNarration(narration);
+                        }, 100);
+                    }
+                }
+            }
+        });
+    }, observerOptions);
+
+    sectionElements.forEach(section => {
+        sectionObserver.observe(section);
+    });
+}
+
+// Toggle Audio Menu
+function toggleAudioMenu() {
+    audioMenu.classList.toggle('show');
+}
+
+// Toggle Music
+function toggleMusic() {
+    AudioManager.musicEnabled = !AudioManager.musicEnabled;
+
+    if (AudioManager.musicEnabled) {
+        musicIndicator.textContent = 'ON';
+        musicIndicator.classList.remove('off');
+        musicIndicator.classList.add('on');
+        startBackgroundMusic();
+    } else {
+        musicIndicator.textContent = 'OFF';
+        musicIndicator.classList.remove('on');
+        musicIndicator.classList.add('off');
+        stopBackgroundMusic();
+    }
+
+    updateMainButtonState();
+}
+
+// Toggle Voice
+function toggleVoice() {
+    AudioManager.voiceEnabled = !AudioManager.voiceEnabled;
+
+    if (AudioManager.voiceEnabled) {
+        voiceIndicator.textContent = 'ON';
+        voiceIndicator.classList.remove('off');
+        voiceIndicator.classList.add('on');
+    } else {
+        voiceIndicator.textContent = 'OFF';
+        voiceIndicator.classList.remove('on');
+        voiceIndicator.classList.add('off');
+        // Cancel any ongoing speech (ResponsiveVoice + fallback)
+        if (typeof responsiveVoice !== 'undefined') {
+            responsiveVoice.cancel();
+        }
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+        }
+    }
+
+    updateMainButtonState();
+}
+
+// Replay Current Section Narration
+function replayCurrentNarration() {
+    if (!AudioManager.voiceEnabled) {
+        // Enable voice if disabled
+        toggleVoice();
+    }
+
+    const narration = sectionNarrations[AudioManager.currentSection || 'home'];
+    if (narration) {
+        speakNarration(narration);
+    }
+
+    // Close menu after action
+    audioMenu.classList.remove('show');
+}
+
+// Update Main Button State
+function updateMainButtonState() {
+    if (!AudioManager.musicEnabled && !AudioManager.voiceEnabled) {
+        audioMainBtn.classList.add('muted');
+        audioMainBtn.classList.remove('playing');
+    } else {
+        audioMainBtn.classList.remove('muted');
+        if (AudioManager.musicEnabled) {
+            audioMainBtn.classList.add('playing');
+        } else {
+            audioMainBtn.classList.remove('playing');
+        }
+    }
+}
+
+// Event Listeners for Audio Control
+if (audioMainBtn) {
+    audioMainBtn.addEventListener('click', toggleAudioMenu);
+}
+
+if (musicToggle) {
+    musicToggle.addEventListener('click', toggleMusic);
+}
+
+if (voiceToggle) {
+    voiceToggle.addEventListener('click', toggleVoice);
+}
+
+if (replayVoice) {
+    replayVoice.addEventListener('click', replayCurrentNarration);
+}
+
+if (audioClose) {
+    audioClose.addEventListener('click', () => {
+        audioMenu.classList.remove('show');
+    });
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (audioControl && !audioControl.contains(e.target)) {
+        audioMenu.classList.remove('show');
+    }
+});
+
+// Handle page visibility change (pause music when tab hidden)
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        if (AudioManager.musicEnabled) {
+            stopBackgroundMusic();
+        }
+        if ('speechSynthesis' in window) {
+            speechSynthesis.pause();
+        }
+    } else {
+        if (AudioManager.musicEnabled && AudioManager.isActive) {
+            startBackgroundMusic();
+        }
+        if ('speechSynthesis' in window) {
+            speechSynthesis.resume();
+        }
+    }
+});
+
+// Initialize audio preference check on page load
+document.addEventListener('DOMContentLoaded', () => {
+    checkAudioPreference();
+});
